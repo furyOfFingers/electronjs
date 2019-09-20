@@ -6,11 +6,13 @@ let win;
 
 function creatWindow() {
   win = new BrowserWindow({
-    width: 1000,
-    height: 1000,
+    width: 500,
+    height: 500,
     webPreferences: {
       nodeIntegration: true,
-    }
+    },
+    //отключает frame и возможность перетаскивать окно
+    // frame: false
   });
 
   win.loadURL(
@@ -25,6 +27,8 @@ function creatWindow() {
   win.on('closed', () => {
     win = null;
   });
+  // отключает menuBar под title`ом фрейма.
+  win.setMenuBarVisibility(false)
 }
 
 app.on('ready', creatWindow);
